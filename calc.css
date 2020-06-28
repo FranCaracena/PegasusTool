@@ -1,0 +1,28 @@
+.container-fluid{
+    margin-top: 10px;
+}
+.entrada{
+    margin-bottom: 10px;
+}
+#remarks{
+    width: 50%;
+}
+#result{
+    font-weight: bold;
+}
+#remarcas{
+    resize: none;
+    min-height: 100px;
+    max-height: 150px;
+    width: 100%;
+}
+#firma{
+    resize: none;
+    min-height: 15px;
+    max-height: 30px;
+    width: 60%;
+}
+
+#firmaca{
+    margin-top: 10px;
+}

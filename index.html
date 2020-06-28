@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<title>Calculator</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Francisco Caracena">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="calc.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
+	<script src="calc.js"></script>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-8">
+				<div id="og" class="entrada">
+					Original Fare
+					<input type="text" id="ogfare" placeholder=0 />
+					Original Tax
+					<input type="text" id="ogtax" placeholder=0 />
+				</div>
+				<div id="mew" class="entrada">
+					New Fare
+					<input type="text" id="noobfare" placeholder=0 />
+					New Tax
+					<input type="text" id="noobtax" placeholder=0 />
+					TST Total
+					<input type="text" id="tsTotal" placeholder=0 />
+				</div>
+				<div id="otros" class="entrada">
+					Penalty
+					<input type="text" id="penalty" placeholder=0 />
+					SVF
+					<input type="text" id="svf" placeholder=0 />
+				</div>
+				<div id="aviosinpt" class="entrada" hidden>
+					Avios
+					<input type="text" id="newavios" placeholder=0 />
+					<select id="aviotipo">
+						<option></option>
+						<option value="COLLECTED">COLLECTED</option>
+						<option value="REFUNDED">REFUNDED</option>
+					</select>
+				</div>
+				<div id="botones">
+					Redemption<input type="checkbox" id="refun" onclick="refun()">
+					Comercial<input type="checkbox" id="norefun" checked onclick="norefun()">
+					<input type="text" id="currency" maxlength="3" value="GBP" />
+					</br>
+					<input type="button" value="Calculate" onclick="calculate()" />
+					<input type="button" value="Clean" onclick="limpiar()" />
+				</div>
+
+				<p id="result"></p>
+				<div id="remarks" hidden>
+					<textarea id="remarcas"></textarea>
+					<input type="button" id="botcopia" value="Copy" onclick="copiar()" />
+				</div>
+
+				<div id="firmaca">
+					<textarea id="firma"></textarea>
+					<div>
+						<input type="button" id="copiafirma" value="Copy" onclick="copiarfirm()" />
+					</div>
+				</div>
+
+				<br />Copy tax from TST:
+				<div id="conversiontax">
+					<textarea id="tasas"></textarea>
+					<div id="botonicos">
+						<input type="button" value="Format" onclick="conversion()" />
+						<input type="button" id="tasasCop" value="Copy" onclick="copiartax()" hidden />
+					</div>
+					<textarea id="resultado" hidden></textarea>
+				</div>
+			</div>
+			<div class="col-2">
+				Add together taxes from TWD/TAX
+				<textarea id="tkTasas"></textarea>
+				<div id="botonicos">
+					<input type="button" value="Sumar" onclick="sumaTax()" />
+				</div>
+				<p id="suma"></p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
