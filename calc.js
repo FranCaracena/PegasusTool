@@ -14,8 +14,8 @@ var adall = 0;
 var avios = 0;
 var tsTotal = 0;
 var avref = 0;
-var currency = 0;
-var resultado = 0;
+var currency = "";
+var resultado = "";
 var penalti = "PENALTY";
 
 function copiar() {
