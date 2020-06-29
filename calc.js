@@ -131,13 +131,24 @@ function remarkPrepare(remarcado) {
         resultadito = remarcado;
     }
 
-    if (resultadito.lenght > 127) {
-        for (var i = 128; i < resultadito.length; i + 65) {
-            if (resultadito.charAt(i) == " ") {
-                resultadito = resultadito.substring(0, i) + " " + resultadito.substring(i, resultadito.length);
-            }
-        }
-    }
+    if(resultadito.charAt(128)== " "){
+		resultadito = resultadito.substring(0, 128)+" "+resultadito.substring(128, resultadito.length);
+	}
+	if(resultadito.charAt(193)== " "){
+		resultadito = resultadito.substring(0, 193)+" "+resultadito.substring(193, resultadito.length);
+	}
+	if(resultadito.charAt(258)== " "){
+		resultadito = resultadito.substring(0, 258)+" "+resultadito.substring(258, resultadito.length);
+	}
+	if(resultadito.charAt(323)== " "){
+		resultadito = resultadito.substring(0, 323)+" "+resultadito.substring(323, resultadito.length);
+	}
+	if(resultadito.charAt(388)== " "){
+		resultadito = resultadito.substring(0, 388)+" "+resultadito.substring(388, resultadito.length);
+	}
+	if(resultadito.charAt(453)== " "){
+		resultadito = resultadito.substring(0, 453)+" "+resultadito.substring(453, resultadito.length);
+	}
     return resultadito;
 }
 
