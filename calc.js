@@ -1,4 +1,21 @@
-var ogfare, niufare, penalty, svf, farediff, taxdiff, addcol, refund, addfare, reffare, addtax, reftax, adall, avios, tsTotal, avref, currency, resultado;
+var ogfare = 0;
+var niufare = 0;
+var penalty = 0;
+var svf = 0; 
+var farediff = 0;
+var taxdiff = 0;
+var addcol = 0;
+var refund = 0;
+var addfare = 0;
+var reffare = 0;
+var addtax = 0;
+var reftax = 0;
+var adall = 0;
+var avios = 0;
+var tsTotal = 0;
+var avref = 0;
+var currency = 0;
+var resultado = 0;
 var penalti = "PENALTY";
 
 function copiar() {
