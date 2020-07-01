@@ -154,7 +154,7 @@ function firmado() {
 
 function conversion() {
     document.getElementById("resultado").removeAttribute("hidden");
-    var formato = /[0-9]{1,5}.[0-9]{1,2}-[A-Z0-9]{2,4}/g;
+    var formato = /[0-9]{1,5}[.][0-9]{1,2}-[A-Z0-9]{2,4}/g;
     var taxes = document.getElementById("tasas").value;
     var tasas = taxes.match(formato);
     var conversion = "";
@@ -169,7 +169,7 @@ function conversion() {
 }
 
 function sumaTax() {
-    var expresion = /[0-9]{1,5}.[0-9]{1,2}/g;
+    var expresion = /[0-9]{1,5}[.][0-9]{1,2}/g;
     var taxes = document.getElementById("tkTasas").value;
     var tasas = taxes.match(expresion);
     var sumaTasas = 0;
@@ -189,7 +189,7 @@ function copiartax() {
 }
 
 function limpiar() {
-    document.getElementById("remarks").setAttribute("hidden", true);
+    document.getElementById("remarks").setAttribute("hidden", "true");
     document.getElementById("ogfare").value = "";
     document.getElementById("noobfare").value = "";
     document.getElementById("ogtax").value = "";
