@@ -19,9 +19,7 @@ var resultado = "";
 var penalti = "PENALTY";
 
 function copiar() {
-
     var strOg = document.getElementById("remarcas").value;
-    console.log(strOg.charAt(63));
     var copyText = document.getElementById("remarcas");
     copyText.select();
     copyText.setSelectionRange(0, 99999);
@@ -131,24 +129,14 @@ function remarkPrepare(remarcado) {
         resultadito = remarcado;
     }
 
-    if(resultadito.charAt(128)== " "){
-		resultadito = resultadito.substring(0, 128)+" "+resultadito.substring(128, resultadito.length);
-	}
-	if(resultadito.charAt(193)== " "){
-		resultadito = resultadito.substring(0, 193)+" "+resultadito.substring(193, resultadito.length);
-	}
-	if(resultadito.charAt(258)== " "){
-		resultadito = resultadito.substring(0, 258)+" "+resultadito.substring(258, resultadito.length);
-	}
-	if(resultadito.charAt(323)== " "){
-		resultadito = resultadito.substring(0, 323)+" "+resultadito.substring(323, resultadito.length);
-	}
-	if(resultadito.charAt(388)== " "){
-		resultadito = resultadito.substring(0, 388)+" "+resultadito.substring(388, resultadito.length);
-	}
-	if(resultadito.charAt(453)== " "){
-		resultadito = resultadito.substring(0, 453)+" "+resultadito.substring(453, resultadito.length);
-	}
+    if (resultadito.length > 128) {
+        console.log(resultadito.length);
+        for (var i = 128; i < resultadito.length; i += 65) {
+            if (resultadito.charAt(i) == " ") {
+                resultadito = resultadito.substring(0, i) + " " + resultadito.substring(i, resultadito.length);
+            }
+        }
+    }
     return resultadito;
 }
 
@@ -160,7 +148,6 @@ function firmado() {
     if(!localStorage.user){
         let user = window.prompt("Enter your name / Team").toUpperCase();
         localStorage.setItem("user", user);
-        console.log("test");
     }
     document.getElementById("firma").innerHTML = "RXETKT REISSUED..EMAIL SENT.." + localStorage.getItem("user") + " " + fecha.getDate() + "" + meses[fecha.getMonth()] + "" + fecha.getFullYear().toString().substring(2, 4);
 }
