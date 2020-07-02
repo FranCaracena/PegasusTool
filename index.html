@@ -2,7 +2,7 @@
 <html>
 	
 <head>
-	<title>Calculator</title>
+	<title>Pegasus Tool</title>
 	<meta charset="utf-8">
 	<meta name="author" content="Francisco Caracena">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -52,42 +52,53 @@
 					Comercial<input type="checkbox" id="norefun" checked onclick="norefun()">
 					<input type="text" id="currency" maxlength="3" value="GBP" />
 					</br>
-					<input type="button" value="Calculate" onclick="calculate()" />
-					<input type="button" value="Clean" onclick="limpiar()" />
+					<input type="button" class="button" value="Calculate" onclick="calculate()" />
+					<input type="button" class="button" value="Clean" onclick="limpiar()" />
 				</div>
 
 				<p id="result"></p>
 				<div id="remarks" hidden>
 					<textarea id="remarcas"></textarea>
 					<div>
-						<input type="button" id="botcopia" value="Copy" onclick="copiar()" />
+						<input type="button" class="button" id="botcopia" value="Copy" onclick="copiar()" />
 					</div>
 				</div>
 
 				<div id="firmaca">
 					<textarea id="firma"></textarea>
 					<div>
-						<input type="button" id="copiafirma" value="Copy" onclick="copiarfirm()" />
+						<input type="button" class="button" id="copiafirma" value="Copy" onclick="copiarfirm()" />
 					</div>
-				</div>
-
-				<div id="conversiontax">
-					<br />Copy tax from TST:<br />
-					<textarea id="tasas"></textarea>
-					<div id="botonicos">
-						<input type="button" value="Format" onclick="conversion()" />
-						<input type="button" id="tasasCop" value="Copy" onclick="copiartax()" hidden />
-					</div>
-					<textarea id="resultado" hidden></textarea>
 				</div>
 			</div>
 			<div class="col-2">
 				Add together taxes from TWD/TAX
 				<textarea id="tkTasas"></textarea>
 				<div id="botonicos">
-					<input type="button" value="Sum" onclick="sumaTax()" />
+					<input type="button" class="button" value="Sum" onclick="sumaTax()" />
 				</div>
 				<p id="suma"></p>
+			</div>
+		</div>
+		<div class="row">
+			<div id="conversiontax" class="col-3">
+				<br />Copy tax from TST:<br />
+				<textarea id="tasas"></textarea>
+				<div id="botonicos">
+					<input type="button" class="button" value="Format" onclick="conversion()" />
+					<input type="button" class="button" id="tasasCop" value="Copy" onclick="copiartax()" hidden />
+				</div>
+				<textarea id="resultado" hidden></textarea>
+			</div>
+			<div class="col-4">
+				<br />Deduct taxes<br />
+				<textarea id="taxPaid" placeholder="Taxes paid in the etkt"></textarea>
+				<textarea id="taxUsed" placeholder="Taxes to deduct"></textarea>
+				<input id="restar" class="button" type="button" value="Deduct" onclick="restar()" />
+			</div>
+			<div class="col-3">
+				<br />Remaining taxes: <span id="finalResult"></span><br />
+				<textarea id="taxRemaining"></textarea>
 			</div>
 		</div>
 	</div>

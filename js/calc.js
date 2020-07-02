@@ -14,6 +14,7 @@ var adall = 0;
 var avios = 0;
 var tsTotal = 0;
 var avref = 0;
+var niutax = 0;
 var currency = "";
 var resultado = "";
 var penalti = "PENALTY";
@@ -116,8 +117,8 @@ function calculate() {
         document.getElementById("result").innerHTML = resultado + "</br>Additional Collection= " + addcol.toFixed(2) + " " + currency;
         adall = parseFloat(addcol);
     }
-    var remarcado = "RX TOTAL ADDITIONAL FARE " + currency + " " + parseFloat(addfare).toFixed(2) + "=RX TOTAL ADDITIONAL TAXES " + currency + " " + parseFloat(addtax).toFixed(2) + "=RX TOTAL " + penalti + " FEES " + currency + " " + parseFloat(penalty).toFixed(2) + "=RX TOTAL CHANNEL FEES " + currency + " " + parseFloat(svf).toFixed(2) + "=RX TOTAL ADDITIONAL RFS " + currency + " 0.00=RX TOTAL ADDITIONAL COLLECTION " + currency + " " + parseFloat(adall).toFixed(2) + "=RX TOTAL ADJUSTED AVIOS " + avios + " " + avref + "=RX TOTAL FARE REFUND " + currency + " " + parseFloat(reffare).toFixed(2) + "=RX TOTAL TAXES REFUND " + currency + " " + parseFloat(reftax).toFixed(2) + "=RX TOTAL RESIDUAL CARD REFUND " + currency + " " + Math.abs(parseFloat(refund)).toFixed(2);
-    var remarcadoFormat = remarkPrepare(remarcado);
+    let remarcado = "RX TOTAL ADDITIONAL FARE " + currency + " " + parseFloat(addfare).toFixed(2) + "=RX TOTAL ADDITIONAL TAXES " + currency + " " + parseFloat(addtax).toFixed(2) + "=RX TOTAL " + penalti + " FEES " + currency + " " + parseFloat(penalty).toFixed(2) + "=RX TOTAL CHANNEL FEES " + currency + " " + parseFloat(svf).toFixed(2) + "=RX TOTAL ADDITIONAL RFS " + currency + " 0.00=RX TOTAL ADDITIONAL COLLECTION " + currency + " " + parseFloat(adall).toFixed(2) + "=RX TOTAL ADJUSTED AVIOS " + avios + " " + avref + "=RX TOTAL FARE REFUND " + currency + " " + parseFloat(reffare).toFixed(2) + "=RX TOTAL TAXES REFUND " + currency + " " + parseFloat(reftax).toFixed(2) + "=RX TOTAL RESIDUAL CARD REFUND " + currency + " " + Math.abs(parseFloat(refund)).toFixed(2);
+    let remarcadoFormat = remarkPrepare(remarcado);
     document.getElementById("remarcas").innerHTML = remarcadoFormat;
 }
 
@@ -188,6 +189,45 @@ function copiartax() {
     document.execCommand("copy");
 }
 
+function restar(){
+    var oldtax = document.getElementById("taxPaid").value;
+    var used = document.getElementById("taxUsed").value;
+    var formato = /[0-9]{1,5}[.][0-9]{1,2}[A-Z0-9]{2}/g;
+    used = used.replace(/-/g, "");
+    var oldtax_arr = oldtax.match(formato);
+    var used_arr = used.match(formato);
+    var resultado = "";
+    var deduct = "yes";
+    var total = 0;
+    var a = 0;
+    var b = 0;
+    for (var i = 0; i < oldtax_arr.length; i++) {
+        for (var j = 0; j < used_arr.length; j++) {
+        //here it just test if the 2 letters after the amount are the same to check if it is the same tax
+            if(oldtax_arr[i].substring(oldtax_arr[i].length-2, oldtax_arr[i].length)==used_arr[j].substring(used_arr[j].length-2, used_arr[j].length)){
+                deduct = j;
+            }
+        }
+        if(deduct!="yes"){
+        //if same tax then deducts the used from the total paid for it
+            resultado = resultado+" "+Math.abs(parseFloat(oldtax_arr[i].substring(0, oldtax_arr[i].length-2))-parseFloat(used_arr[deduct].substring(0, used_arr[deduct].length-2))).toFixed(2)+""+oldtax_arr[i].substring(oldtax_arr[i].length-2, oldtax_arr[i].length);
+            a = parseFloat(oldtax_arr[i].substring(0, oldtax_arr[i].length-2));
+            b = parseFloat(used_arr[deduct].substring(0, used_arr[deduct].length-2));
+            total = total + (parseFloat(a)-parseFloat(b));
+            deduct = "yes";
+            a, b = 0;
+        }else{
+        //if not just adds the tax as it is
+            resultado = resultado+" "+oldtax_arr[i];
+            a = parseFloat(oldtax_arr[i].substring(0, oldtax_arr[i].length-2));
+            total = total + (parseFloat(a));
+            a = 0;
+        }
+    }
+    document.getElementById("taxRemaining").innerHTML = resultado;
+    document.getElementById("finalResult").innerHTML = Math.abs(total).toFixed(2);
+}
+
 function limpiar() {
     document.getElementById("remarks").setAttribute("hidden", "true");
     document.getElementById("ogfare").value = "";
@@ -202,8 +242,12 @@ function limpiar() {
     document.getElementById("resultado").value = "";
     document.getElementById("tasas").value = "";
     document.getElementById("tsTotal").value = "";
+    document.getElementById("taxPaid").value = "";
+    document.getElementById("taxUsed").value = "";
     document.getElementById("resultado").setAttribute("hidden", "true");
     document.getElementById("tasasCop").setAttribute("hidden", "true");
+    document.getElementById("taxRemaining").innerHTML = "";
+    document.getElementById("finalResult").innerHTML = "";
     ogfare, niufare, ogtax, niutax, penalty, svf, addcol, addfare, reffare, addtax, reftax, adall, avios, tsTotal = 0;
     avref = "";
     currency = "";
