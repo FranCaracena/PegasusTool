@@ -131,7 +131,6 @@ function remarkPrepare(remarcado) {
     }
 
     if (resultadito.length > 128) {
-        console.log(resultadito.length);
         for (var i = 128; i < resultadito.length; i += 65) {
             if (resultadito.charAt(i) == " ") {
                 resultadito = resultadito.substring(0, i) + " " + resultadito.substring(i, resultadito.length);
