@@ -4,9 +4,6 @@
 .entrada{
     margin-bottom: 10px;
 }
-#remarks{
-    width: 50%;
-}
 #result{
     font-weight: bold;
 }
@@ -14,7 +11,7 @@
     resize: none;
     min-height: 100px;
     max-height: 150px;
-    width: 100%;
+    width: 60%;
 }
 #firma{
     resize: none;
@@ -25,4 +22,13 @@
 
 #firmaca{
     margin-top: 10px;
+}
+
+#restar{
+    margin-top: 10px;
+    vertical-align: top;
+}
+
+.button{
+    border-radius: 4px;
 }

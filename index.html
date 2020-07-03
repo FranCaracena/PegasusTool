@@ -2,23 +2,16 @@
 <html>
 	
 <head>
-	<title>Calculator</title>
+	<title>Pegasus Tool</title>
 	<meta charset="utf-8">
 	<meta name="author" content="Francisco Caracena">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="calc.css">
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script>
-	<script src="calc.js"></script>
+	<link rel="stylesheet" href="css/calc.css">
+	<script src="js/jquery-3.5.1.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/calc.js"></script>
 </head>
 
 <body>
@@ -59,40 +52,53 @@
 					Comercial<input type="checkbox" id="norefun" checked onclick="norefun()">
 					<input type="text" id="currency" maxlength="3" value="GBP" />
 					</br>
-					<input type="button" value="Calculate" onclick="calculate()" />
-					<input type="button" value="Clean" onclick="limpiar()" />
+					<input type="button" class="button" value="Calculate" onclick="calculate()" />
+					<input type="button" class="button" value="Clean" onclick="limpiar()" />
 				</div>
 
 				<p id="result"></p>
 				<div id="remarks" hidden>
 					<textarea id="remarcas"></textarea>
-					<input type="button" id="botcopia" value="Copy" onclick="copiar()" />
+					<div>
+						<input type="button" class="button" id="botcopia" value="Copy" onclick="copiar()" />
+					</div>
 				</div>
 
 				<div id="firmaca">
 					<textarea id="firma"></textarea>
 					<div>
-						<input type="button" id="copiafirma" value="Copy" onclick="copiarfirm()" />
+						<input type="button" class="button" id="copiafirma" value="Copy" onclick="copiarfirm()" />
 					</div>
-				</div>
-
-				<br />Copy tax from TST:
-				<div id="conversiontax">
-					<textarea id="tasas"></textarea>
-					<div id="botonicos">
-						<input type="button" value="Format" onclick="conversion()" />
-						<input type="button" id="tasasCop" value="Copy" onclick="copiartax()" hidden />
-					</div>
-					<textarea id="resultado" hidden></textarea>
 				</div>
 			</div>
 			<div class="col-2">
 				Add together taxes from TWD/TAX
 				<textarea id="tkTasas"></textarea>
 				<div id="botonicos">
-					<input type="button" value="Sum" onclick="sumaTax()" />
+					<input type="button" class="button" value="Sum" onclick="sumaTax()" />
 				</div>
 				<p id="suma"></p>
+			</div>
+		</div>
+		<div class="row">
+			<div id="conversiontax" class="col-3">
+				<br />Copy tax from TST:<br />
+				<textarea id="tasas"></textarea>
+				<div id="botonicos">
+					<input type="button" class="button" value="Format" onclick="conversion()" />
+					<input type="button" class="button" id="tasasCop" value="Copy" onclick="copiartax()" hidden />
+				</div>
+				<textarea id="resultado" hidden></textarea>
+			</div>
+			<div class="col-4">
+				<br />Deduct taxes<br />
+				<textarea id="taxPaid" placeholder="Taxes paid in the etkt"></textarea>
+				<textarea id="taxUsed" placeholder="Taxes to deduct"></textarea>
+				<input id="restar" class="button" type="button" value="Deduct" onclick="restar()" />
+			</div>
+			<div class="col-3">
+				<br />Remaining taxes: <span id="finalResult"></span><br />
+				<textarea id="taxRemaining"></textarea>
 			</div>
 		</div>
 	</div>
