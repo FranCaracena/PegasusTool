@@ -247,7 +247,21 @@ function limpiar() {
     document.getElementById("tasasCop").setAttribute("hidden", "true");
     document.getElementById("taxRemaining").innerHTML = "";
     document.getElementById("finalResult").innerHTML = "";
-    ogfare, niufare, ogtax, niutax, penalty, svf, addcol, addfare, reffare, addtax, reftax, adall, avios, tsTotal = 0;
+    ogfare = 0;
+    niufare = 0;
+    ogtax = 0;
+    niutax = 0;
+    penalty = 0;
+    svf = 0;
+    addcol = 0;
+    addfare = 0;
+    reffare = 0;
+    addtax = 0;
+    reftax = 0;
+    adall = 0;
+    avios = 0;
+    tsTotal = 0;
+    refund = 0;
     avref = "";
     currency = "";
 }
