@@ -200,6 +200,7 @@ function restar(){
     var total = 0;
     var a = 0;
     var b = 0;
+    var failed = 0;
     for (var i = 0; i < oldtax_arr.length; i++) {
         for (var j = 0; j < used_arr.length; j++) {
         //here it just test if the 2 letters after the amount are the same to check if it is the same tax
@@ -209,11 +210,16 @@ function restar(){
         }
         if(deduct!="yes"){
         //if same tax then deducts the used from the total paid for it
-            resultado = resultado+" "+Math.abs(parseFloat(oldtax_arr[i].substring(0, oldtax_arr[i].length-2))-parseFloat(used_arr[deduct].substring(0, used_arr[deduct].length-2))).toFixed(2)+""+oldtax_arr[i].substring(oldtax_arr[i].length-2, oldtax_arr[i].length);
             a = parseFloat(oldtax_arr[i].substring(0, oldtax_arr[i].length-2));
             b = parseFloat(used_arr[deduct].substring(0, used_arr[deduct].length-2));
-            total = total + (parseFloat(a)-parseFloat(b));
-            deduct = "yes";
+            if((parseFloat(a)-parseFloat(b))>=0){
+                resultado = resultado+" "+Math.abs(parseFloat(oldtax_arr[i].substring(0, oldtax_arr[i].length-2))-parseFloat(used_arr[deduct].substring(0, used_arr[deduct].length-2))).toFixed(2)+""+oldtax_arr[i].substring(oldtax_arr[i].length-2, oldtax_arr[i].length);
+                total = total + (parseFloat(a)-parseFloat(b));
+                deduct = "yes";
+            }else{
+                alert("The tax "+oldtax_arr[i].substring(oldtax_arr[i].length-2, oldtax_arr[i].length)+" is higher to deduct than paid");
+                failed++;
+            }
             a, b = 0;
         }else{
         //if not just adds the tax as it is
@@ -223,8 +229,10 @@ function restar(){
             a = 0;
         }
     }
-    document.getElementById("taxRemaining").innerHTML = resultado;
-    document.getElementById("finalResult").innerHTML = Math.abs(total).toFixed(2);
+    if(failed==0){
+        document.getElementById("taxRemaining").innerHTML = resultado;
+        document.getElementById("finalResult").innerHTML = Math.abs(total).toFixed(2);
+    }
 }
 
 function limpiar() {
