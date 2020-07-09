@@ -218,7 +218,6 @@ function restar() {
                 if ((parseFloat(a) - parseFloat(b)) > 0) {
                     resultado = resultado + " " + Math.abs(parseFloat(oldtax_arr[i].substring(0, oldtax_arr[i].length - 2)) - parseFloat(used_arr[deduct].substring(0, used_arr[deduct].length - 2))).toFixed(2) + "" + oldtax_arr[i].substring(oldtax_arr[i].length - 2, oldtax_arr[i].length);
                     total = total + (parseFloat(a) - parseFloat(b));
-                    deduct = "yes";
                 } else if ((parseFloat(a) - parseFloat(b)) < 0) {
                     alert("The tax " + oldtax_arr[i].substring(oldtax_arr[i].length - 2, oldtax_arr[i].length) + " is higher to deduct than paid");
                     failed++;
@@ -231,6 +230,7 @@ function restar() {
                 total = total + (parseFloat(a));
                 a = 0;
             }
+            deduct = "yes";
         }
         if (failed == 0) {
             document.getElementById("taxRemaining").innerHTML = resultado;
