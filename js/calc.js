@@ -78,7 +78,13 @@ function checkvalues() {
 
 function calculate() {
     document.getElementById("remarks").removeAttribute("hidden");
-    addfare, reffare, addtax, reftax, adall, refund, farediff = 0;
+    addfare = 0;
+    reffare = 0;
+    addtax = 0;
+    reftax= 0;
+    adall = 0;
+    refund = 0;
+    farediff = 0;
     avios = document.getElementById("newavios").value;
     if (avios == "") {
         avios = 0;
