@@ -151,11 +151,11 @@ window.onload = firmado;
 function firmado() {
     let fecha = new Date();
     let meses = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-    if (!localStorage.user) {
-        let user = window.prompt("Enter your name / Team").toUpperCase();
-        localStorage.setItem("user", user);
+    if (!localStorage.agente) {
+        let agente = window.prompt("Enter your name / Team").toUpperCase();
+        localStorage.setItem("agente", agente);
     }
-    document.getElementById("firma").innerHTML = "RXETKT REISSUED..EMAIL SENT.." + localStorage.getItem("user") + " " + fecha.getDate() + "" + meses[fecha.getMonth()] + "" + fecha.getFullYear().toString().substring(2, 4);
+    document.getElementById("firma").innerHTML = "RXETKT REISSUED..EMAIL SENT.." + localStorage.getItem("agente") + " " + fecha.getDate() + "" + meses[fecha.getMonth()] + "" + fecha.getFullYear().toString().substring(2, 4);
 }
 
 function conversion() {
