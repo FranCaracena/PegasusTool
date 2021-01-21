@@ -38,9 +38,9 @@ body{
 }
 
 .taxTip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
+    position: relative;
+    display: inline-block;
+    user-select: none;
 }
 
 .taxTip .taxTipText {
@@ -53,9 +53,8 @@ body{
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  top: 100%;
-  left: 50%;
-  margin-left: -80px;
+  top: -5px;
+  left: 105%;
 }
 
 .taxTip:hover .taxTipText {
